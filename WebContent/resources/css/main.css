@@ -1,9 +1,29 @@
 @CHARSET "US-ASCII";
 
 .formtable {
-	width: 700px;
 	padding: 10px;
 	border: 1px solid blue;
+	border-spacing: 10px;
+	position: relative;
+	margin: auto;
+	overflow: auto;
+}
+
+div.center{
+	position: relative;
+	margin: auto;
+	overflow: auto;
+	text-align: center;
+}
+
+table.offers {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid gray;
+	border-spacing: 10px;
+	position: relative;
+	margin: auto;
+	overflow: auto;
 }
 
 input[type=text] {
@@ -37,13 +57,6 @@ textarea {
 p.error {
 	font-size: small;
 	color: red;
-}
-
-table.offers {
-	text-align: center;
-	padding: 10px;
-	border: 1px solid gray;
-	border-spacing: 10px;
 }
 
 .valid {

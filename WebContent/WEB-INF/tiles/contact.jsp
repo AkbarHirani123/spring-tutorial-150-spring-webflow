@@ -3,7 +3,9 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<h3>Send New Message:</h3>
+<div class="center">
+	<h3>Send New Message:</h3>
+</div>
 
 <!-- comandName is the Bean -->
 <sf:form method="post" commandName="message">
@@ -16,7 +18,7 @@
 		<tr>
 			<td class="label">Your Name:</td>
 			<td><sf:input class="control" path="name" name="name"
-					type="text" /><br />
+					type="text" value="${fromName}"/><br />
 				<div class="error">
 					<sf:errors path="name"></sf:errors>
 				</div></td>
@@ -24,7 +26,7 @@
 		<tr>
 			<td class="label">Your Email:</td>
 			<td><sf:input class="control" path="email" name="email"
-					type="text" /><br />
+					type="text" value="${fromEmail}"/><br />
 				<div class="error">
 					<sf:errors path="email"></sf:errors>
 				</div></td>

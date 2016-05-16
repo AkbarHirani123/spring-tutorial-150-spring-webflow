@@ -8,9 +8,9 @@
 		document.f.username.focus();
 	});
 </script>
-
-<h3>Login with Username and Password</h3>
-
+<div class="center">
+	<h3>Login with Username and Password</h3>
+</div>
 <form name='f' action='${pageContext.request.contextPath}/login'
 	method='POST'>
 	<table class="formtable">
@@ -37,7 +37,8 @@
 			value="${_csrf.token}" />
 	</table>
 </form>
-
-<p>
-	<a href="<c:url value="/newaccount"/>">Create account</a>
-</p>
+<div class="center">
+	<p>
+		<a href="<c:url value="/newaccount"/>">Create account</a>
+	</p>
+</div>

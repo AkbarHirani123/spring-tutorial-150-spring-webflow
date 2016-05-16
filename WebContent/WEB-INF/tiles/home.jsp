@@ -19,24 +19,26 @@
 		</tr>
 	</c:forEach>
 </table>
-<c:choose>
-	<c:when test="${hasOffer}">
-		<p>
-			<a href="${pageContext.request.contextPath}/createoffer">Edit or
-				delete your current offer.</a>
-		</p>
-	</c:when>
-	<c:otherwise>
-		<p>
-			<a href="${pageContext.request.contextPath}/createoffer">Add a
-				new offer.</a>
-		</p>
-	</c:otherwise>
-</c:choose>
+<div class="center">
+	<c:choose>
+		<c:when test="${hasOffer}">
+			<p>
+				<a href="${pageContext.request.contextPath}/createoffer">Edit or
+					delete your current offer.</a>
+			</p>
+		</c:when>
+		<c:otherwise>
+			<p>
+				<a href="${pageContext.request.contextPath}/createoffer">Add a
+					new offer.</a>
+			</p>
+		</c:otherwise>
+	</c:choose>
 
 
-<sec:authorize access="hasAuthority('ROLE_ADMIN')">
-	<p>
-		<a href="${pageContext.request.contextPath}/admin">Admin Page</a>
-	</p>
-</sec:authorize>
+	<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+		<p>
+			<a href="${pageContext.request.contextPath}/admin">Admin Page</a>
+		</p>
+	</sec:authorize>
+</div>

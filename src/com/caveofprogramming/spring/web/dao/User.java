@@ -1,5 +1,7 @@
 package com.caveofprogramming.spring.web.dao;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,35 +14,48 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.caveofprogramming.spring.web.validation.ValidEmail;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name = "users")
+public class User implements Serializable {
 
-	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Size(min = 8, max = 15, groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Pattern(regexp = "^\\w{8,}$", groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5362437768854142524L;
+
+	@NotBlank(groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 8, max = 15, groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Pattern(regexp = "^\\w{8,}$", groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
 	@Id
-	@Column(name="username")
+	@Column(name = "username")
 	private String username;
-	
-	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Pattern(regexp="^\\S+$", groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Size(min=6, max=15, groups={FormValidationGroup.class})
-	@Column(name="password")
+
+	@NotBlank(groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Pattern(regexp = "^\\S+$", groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 6, max = 15, groups = { FormValidationGroup.class })
+	@Column(name = "password")
 	private String password;
-	
-	@ValidEmail(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Column(name="email")
+
+	@ValidEmail(groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="enabled")
+
+	@Column(name = "enabled")
 	private boolean enabled = false;
-	
-	@Column(name="authority")
+
+	@Column(name = "authority")
 	private String authority;
-	
-	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Size(min = 5, max = 60, groups={PersistanceValidationGroup.class, FormValidationGroup.class})
-	@Column(name="name")
+
+	@NotBlank(groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 5, max = 60, groups = { PersistanceValidationGroup.class,
+			FormValidationGroup.class })
+	@Column(name = "name")
 	private String name;
 
 	public User() {
