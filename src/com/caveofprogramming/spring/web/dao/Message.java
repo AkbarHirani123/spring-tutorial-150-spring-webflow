@@ -3,6 +3,11 @@ package com.caveofprogramming.spring.web.dao;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.caveofprogramming.spring.web.validation.ValidEmail;
 
 @Entity
 @Table(name = "messages")
@@ -17,10 +22,21 @@ public class Message implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Size(min = 5, max = 100)
 	private String subject;
+	
+	@Size(min = 5, max = 1000)
 	private String content;
+	
+	@Size(min = 5, max = 60)
+	@Column(name="name")
 	private String name;
+	
+	@ValidEmail
+	@Column(name="email")
 	private String email;
+	
+	//Username being sent to
 	private String username;
 
 	public Message() {
