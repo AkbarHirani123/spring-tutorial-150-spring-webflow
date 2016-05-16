@@ -10,6 +10,8 @@
 
 	<input type="hidden" name="_flowExecutionKey"
 		value="${FlowExecutionKey}" />
+	<input type="hidden" name="_eventId" value="send" />
+	<input type="hidden" name="username" value="akbarhirani" />
 
 	<table class="formtable">
 		<tr>

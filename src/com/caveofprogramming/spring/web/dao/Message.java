@@ -24,10 +24,6 @@ public class Message implements Serializable {
 	private String username;
 
 	public Message() {
-		this.subject = "Subject goes here";
-		this.content = "Content goes here";
-		this.name = "Some name";
-		this.email = "Some email";
 	}
 
 	public Message(String subject, String content, String name, String email,
@@ -138,6 +134,13 @@ public class Message implements Serializable {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", subject=" + subject + ", content="
+				+ content + ", name=" + name + ", email=" + email
+				+ ", username=" + username + "]";
 	}
 
 }

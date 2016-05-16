@@ -6,13 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
+import com.caveofprogramming.spring.web.dao.Message;
+import com.caveofprogramming.spring.web.dao.MessagesDao;
 import com.caveofprogramming.spring.web.dao.User;
 import com.caveofprogramming.spring.web.dao.UsersDao;
 
 @Service("usersService")
 public class UsersService {
 
+	@Autowired
 	private UsersDao usersDao;
+	
+	@Autowired
+	private MessagesDao messagesDao;
 
 	@Autowired
 	public void setOffersDao(UsersDao usersDao) {
@@ -33,4 +39,7 @@ public class UsersService {
 		return usersDao.getAllUsers();
 	}
 
+	public void sendMessage(Message message){
+		messagesDao.saveOrUpdate(message);
+	}
 }
