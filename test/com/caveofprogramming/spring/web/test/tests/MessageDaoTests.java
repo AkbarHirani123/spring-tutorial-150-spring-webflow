@@ -1,5 +1,9 @@
 package com.caveofprogramming.spring.web.test.tests;
 
+import static org.junit.Assert.*;
+
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.junit.Before;
@@ -46,6 +50,11 @@ public class MessageDaoTests {
 	private User user4 = new User("oliverqueen", "oliver queen", "123456",
 			"akbar@hirani.com", false, "user");
 
+	private Message message1 = new Message("Test subject 1", "Test content 1",
+			"Akbar Hirani", "akbar@hirani.com", user1.getUsername());
+	private Message message2 = new Message("Test subject 2", "Test content 2",
+			"Akbar Hirani", "akbar@hirani.com", user1.getUsername());
+	
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
@@ -66,6 +75,31 @@ public class MessageDaoTests {
 				"Akbar Hirani", "akbar@hirani.com", user1.getUsername());
 		
 		messagesDao.saveOrUpdate(message1);
+		
+	}
+	
+	@Test
+	public void testDelete(){
+		userDao.create(user1);
+		userDao.create(user2);
+		
+		messagesDao.saveOrUpdate(message1);
+		messagesDao.saveOrUpdate(message2);
+		
+		List<Message> messages = messagesDao.getMessages(user1.getUsername());
+		
+		for(Message message : messages){
+			Message retrieved = messagesDao.getMessage(message.getId());
+			assertEquals(message, retrieved);
+		}
+		
+		Message toDelete = messages.get(1);
+		
+		assertNotNull("This message not deleted yet.", toDelete);
+		
+		messagesDao.delete(toDelete.getId());
+		
+		assertNull("This message was deleted.", messagesDao.getMessage(toDelete.getId()));
 	}
 
 }
