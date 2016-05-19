@@ -9,7 +9,7 @@
 	overflow: auto;
 }
 
-div.center{
+div.center {
 	position: relative;
 	margin: auto;
 	overflow: auto;
@@ -24,6 +24,11 @@ table.offers {
 	position: relative;
 	margin: auto;
 	overflow: auto;
+}
+
+table.offers td {
+	border-bottom: 1px dashed black;
+	padding-bottom: 10px;
 }
 
 input[type=text] {
